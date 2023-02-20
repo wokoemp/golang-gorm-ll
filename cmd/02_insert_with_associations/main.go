@@ -9,8 +9,8 @@ import (
 
 type CreditCard struct {
 	gorm.Model
-	Number   string
-	UserID   uint // 外键 是user的id
+	Number string
+	UserID uint // 外键 是user的id
 }
 
 type User struct {
@@ -28,12 +28,12 @@ func main() {
 
 	err = db.AutoMigrate(&CreditCard{})
 	if err != nil {
-		fmt.Printf("create database:: CreditCard:: %+v",err)
+		fmt.Printf("create database:: CreditCard:: %+v", err)
 	}
 
 	err = db.AutoMigrate(&User{})
 	if err != nil {
-		fmt.Printf("create database:: User:: %+v",err)
+		fmt.Printf("create database:: User:: %+v", err)
 	}
 
 	// 自定进行表关联
@@ -48,4 +48,21 @@ func main() {
 
 	//
 	//db.Omit(clause.Associations).Create(&User{Name: "cucumber"})
+
+	// batch insert
+	//var users = []User{{
+	//	Name: "judy1",
+	//	CreditCard: CreditCard{Number: "100000001"},
+	//	},
+	//	{
+	//		Name: "judy2",
+	//		CreditCard: CreditCard{Number: "100000002"},
+	//	},
+	//	{
+	//		Name: "judy3",
+	//		CreditCard: CreditCard{Number: "100000003"},
+	//	},
+	//}
+	//
+	//db.Create(&users)
 }
