@@ -82,7 +82,7 @@ func main() {
 		set age = age - 10
 		where id = 1
 	*/
-	//db.Model(&UserUpdatePractice{}).Where("id = 1").UpdateColumn("age", gorm.Expr("age + ?", 10))
+	db.Model(&UserUpdatePractice{}).Where("id = 1").UpdateColumn("age", gorm.Expr("age + ?", 10))
 	// ⚠️ UpdateColumn、UpdateColumns vs Update、Updates:
 	// 1. UpdateColumn、UpdateColumns 关闭了hook方法和追踪时间自动更新
 
